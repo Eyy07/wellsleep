@@ -7,7 +7,7 @@
     cursor: pointer;
     display: flex;
     overflow:hidden;
-    max-width: 100%;
+    max-width: 80%;
 }
 
 /* Chat bubble style */
@@ -20,7 +20,7 @@
     align-items: center;
     position: relative;
     z-index: 1000;
-    max-width: 100%;
+    max-width: 80%;
 }
 
 /* Bot icon inside the chat bubble */
