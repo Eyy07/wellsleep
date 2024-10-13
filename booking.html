@@ -1,0 +1,547 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sleepwell Apartelle Booking</title>
+    <link rel="stylesheet" href="booking1.16.css">
+    <link rel="stylesheet" href="booking1.17.css">
+    <link rel="stylesheet" href="chatsupport4.css">
+    <link rel="stylesheet" href="booking4.2.css">
+    <link rel="stylesheet" href="booking3.css">
+    <link rel="stylesheet" href="cre1.css">
+    <link rel="stylesheet" href="sidebar2.css">
+    <script src="script2.js"></script>
+    <script src="cre.js"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.1/css/all.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;500&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@700&family=Merriweather:wght@400&display=swap" rel="stylesheet">
+</head>
+<body>
+    
+    <!-- Navigation Bar -->
+    <nav class="navbar">
+        <div class="container">
+            <div class="logo">
+                <img src="logo.jpg" alt="Sleepwell Apartelle Logo" style="height: 50px; width: auto; margin-right: 10px;">
+                <span>Sleepwell Apartelle</span>
+            </div>
+            <div class="burger-menu" onclick="toggleNav()">
+                <i class="fas fa-bars"></i>
+            </div>
+            <ul class="nav-links">
+                <li><a href="#home">Home</a></li>
+                <li><a href="#rooms">Rooms</a></li>
+                <li><a href="#aboutus">About Us</a></li>
+                <li><a href="#contact">Contact Us</a></li>
+                <li><a href="cancel_booking.html">Cancel Booking</a></li>
+                <li><a href="login.html">Admin</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <button id="toggleSidebar" onclick="toggleSidebar()"> > </button>
+
+    <!-- Icons Sidebar -->
+    <div class="sidebar-icons" id="sidebar">
+        <a href="#home"><i class="fas fa-home"></i></a>
+        <a href="#rooms"><i class="fas fa-bed"></i></a>
+        <a href="#aboutus"><i class="fas fa-info-circle"></i></a>
+        <a href="#contact"><i class="fas fa-envelope"></i></a>
+        <a href="cancel_booking.html"><i class="fas fa-times-circle"></i></a>
+        <a href="login.html"><i class="fas fa-user"></i></a>
+    </div>
+
+<script>
+
+     // Function to toggle the sidebar visibility and update the toggle button
+     function toggleSidebar() {
+        const sidebar = document.getElementById('sidebar');
+        const toggleBtn = document.getElementById('toggleSidebar');
+
+        // Toggle the 'active' class to show/hide sidebar
+        sidebar.classList.toggle('active');
+
+        // Check if the sidebar is active to change the button text and position
+        if (sidebar.classList.contains('active')) {
+            toggleBtn.innerHTML = ' < '; // Change the text to '<'
+            toggleBtn.style.left = '40px'; // Move the button to the right when the sidebar is open
+        } else {
+            toggleBtn.innerHTML = ' > '; // Change the text back to '>'
+            toggleBtn.style.left = '1px'; // Move the button back to the original position
+        }
+    }
+
+
+ document.addEventListener('scroll', function() {
+    const navbar = document.querySelector('.navbar');
+    const sidebarIcons = document.querySelector('.sidebar-icons');
+    if (window.scrollY > 100) {
+        navbar.classList.add('scrolled');
+    } else {
+        navbar.classList.remove('scrolled');
+    }
+});
+
+    function toggleNav() {
+    const navLinks = document.querySelector('.nav-links');
+    navLinks.classList.toggle('show');
+}
+</script>
+
+  <!-- Hero Section -->
+<section id="home" class="hero-section">
+    <button id="booknow-button">
+        <img id="booknow-overlay" src="booknow350.png" alt="Book Now">
+    </button>    
+    <div class="navigation2-dots">
+        <span class="dot active" data-index="0"></span>
+        <span class="dot" data-index="1"></span>
+        <span class="dot" data-index="2"></span>
+    </div>
+    <div class="hero-text">
+        <h4>Welcome to</h4>
+        <h1>SLEEPWELL APARTELLE</h1>
+    </div>
+</section>
+
+        <script>
+    document.getElementById('booknow-button').onclick = function() {
+        // Assuming rooms-section is an ID of a section on the same page
+        document.getElementById('rooms').scrollIntoView({ behavior: 'smooth' });
+
+        // If you want to navigate to another page, use window.location.href instead
+        // window.location.href = 'path-to-your-rooms-section-page.html';
+    };
+            document.addEventListener('DOMContentLoaded', function() {
+                const dots = document.querySelectorAll('.dot');
+                let currentIndex = 0;
+                const images = ['BUILDINGBACKGROUND.png', 'BACKGROUND.png', 'BUILDINGBACKGROUND.png'];
+            
+                // Function to set background image based on index
+                function setBackground(index) {
+                    document.querySelector('.hero-section').style.backgroundImage = `url('${images[index]}')`;
+                    dots.forEach(dot => dot.classList.remove('active'));
+                    dots[index].classList.add('active');
+                }
+            
+                // Set up dot click listeners
+                dots.forEach(dot => {
+                    dot.addEventListener('click', function() {
+                        const index = parseInt(dot.getAttribute('data-index'));
+                        currentIndex = index;
+                        setBackground(index);
+                        resetAnimation();
+                    });
+                });
+            
+                // Function to reset the animation to restart sliding
+                function resetAnimation() {
+                    document.querySelector('.hero-section').style.animation = 'none';
+                    document.querySelector('.hero-section').offsetHeight; // Trigger reflow
+                    document.querySelector('.hero-section').style.animation = 'slideBackground 15s infinite';
+                }
+            
+                // Automatic sliding
+                setInterval(() => {
+                    currentIndex = (currentIndex + 1) % images.length;
+                    setBackground(currentIndex);
+                }, 5000); // Change image every 5 seconds
+            });
+            </script>
+            
+            <div class="chat-support" onclick="toggleChat()">
+                <div class="chat-bubble">
+                    <div class="chat-icon">
+                        <i class="fas fa-robot"></i>
+                    </div>
+                    <span>Chat with us!</span>
+                </div>
+            </div>
+            
+            <div class="chat-box" id="chat-box" style="display: none;">
+                <div class="chat-header">
+                    <div class="header-icon">
+                        <i class="fas fa-robot"></i> <!-- Bot icon -->
+                    </div>
+                    <h3>Chat Support</h3>
+                    <button class="close-btn" onclick="toggleChat()">×</button>
+                </div>                             
+                <div class="chat-content">
+                    <div class="message received">
+                        <p>Hi! How can I help you today?</p>
+                    </div>
+                </div>
+                <div class="suggestions">
+                    <button onclick="sendSuggestion('Specify your operating hours?')">Specify your operating hours...</button>
+                    <button onclick="sendSuggestion('How can I book a room?')">How can I book a room?...</button>
+                    <button onclick="sendSuggestion('What is your contact email?')">What is your contact email?...</button>
+                </div>
+                <div class="chat-input">
+                    <input type="text" id="chat-input" placeholder="Type your message..." />
+                    <button onclick="sendMessage()">Send</button>
+                </div>
+            </div>
+            
+        <div class="moto">
+            <h1>Discover Your Perfect Getaway at Sleepwell Apartelle</h1>
+            <p>Experience unparalleled comfort and relaxation in our meticulously designed rooms—your ultimate retreat awaits.</p>
+        </div>
+
+    <!-- Place Section -->
+    <section id="rooms" class="rooms-section">
+<section id="unique-place-section" class="unique-place-section">
+    <div class="unique-place-container">
+        <h2 class="section-title">
+            OUR <span class="highlight">ROOMS</span>
+        </h2>
+        <div class="unique-place-row">
+            <div class="unique-place-item">
+                <img src="economyroom.jpg" alt="Place Photo 1" class="unique-place-photo" id="place-photo-1">
+                <h3 class="unique-place-title"> Economy Room</h3>
+                <p class="unique-place-p">₱ 380.00</p>
+                <div class="unique-place-actions">
+                    <button class="unique-place-book-now-button" onclick="window.location.href='economy.html'">Book Now</button>
+                    <div class="unique-place-reviews">
+                        <i class="fa fa-star unique-place-star-icon"></i>
+                    </div>
+                </div>
+            </div>
+            <div class="unique-place-item">
+                <img src="deluxeroom.jpg" alt="Place Photo 2" class="unique-place-photo" id="place-photo-2">
+                <h3 class="unique-place-title">Deluxe Room</h3>
+                <p class="unique-place-p">₱ 480.00</p>
+                <div class="unique-place-actions">
+                    <button class="unique-place-book-now-button" onclick="window.location.href='deluxeroom.html'">Book Now</button>
+                    <div class="unique-place-reviews">
+                        <i class="fa fa-star unique-place-star-icon"></i>
+                    </div>
+                </div>
+            </div>
+            <div class="unique-place-item">
+                <img src="familyroom.jpg" alt="Place Photo 3" class="unique-place-photo" id="place-photo-3">
+                <h3 class="unique-place-title">Family Room</h3>
+                <p class="unique-place-p">₱ 800.00</p>
+                <div class="unique-place-actions">
+                    <button class="unique-place-book-now-button" onclick="window.location.href='familyroom.html'">Book Now</button>
+                    <div class="unique-place-reviews">
+                        <i class="fa fa-star unique-place-star-icon"></i>
+                    </div>
+                </div>
+            </div>
+            <div class="unique-place-item">
+                <img src="superroom.jpg" alt="Place Photo 4" class="unique-place-photo" id="place-photo-4">
+                <h3 class="unique-place-title">Super Deluxe</h3>
+                <p class="unique-place-p">₱ 700.00</p>
+                <div class="unique-place-actions">
+                    <button class="unique-place-book-now-button" onclick="window.location.href='superroom.html'">Book Now</button>
+                    <div class="unique-place-reviews">
+                        <i class="fa fa-star unique-place-star-icon"></i>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+</section>
+
+<!-- Overlay for Enlarged Photo -->
+<div id="unique-overlay" class="unique-overlay"></div>
+
+ <!-- About Us Section with Map and Building -->
+<section id="aboutus" class="aboutus-section">
+    <div class="container">
+        <div class="aboutus-content">
+            <div class="aboutus-text conter01">
+                <h2 class="section-title">
+                    <span class="highlight">ABOUT</span> US
+                </h2>
+                <p>Welcome to Sleepwell Apartelle in San Jose del Monte, where we offer cozy rooms, modern amenities, and a welcoming atmosphere.</p>
+                <p>Enjoy comfortable bedding, and exceptional service tailored to make your stay stress-free.</p>
+                <p>Located near local attractions and transport links, Sleepwell Apartelle is your perfect home away from home.</p>
+
+                <a href="https://www.facebook.com/profile.php?id=100063553304564&mibextid=ZbWKwL" target="_blank">
+                    <i class="fab fa-facebook-square" style="font-size: 25px; color: #3b5998;"></i>
+                </a>
+    
+                <!-- Telephone Icon -->
+                <i class="fas fa-phone" id="phoneIcon" style="font-size: 25px; color: #25d366;"></i>
+    
+                <!-- Email Icon -->
+                <a href="mailto:apartelle.sleepwell@yahoo.com">
+                    <i class="fas fa-envelope" style="font-size: 25px; color: #ea4335;"></i>
+                </a>
+                <a href="https://www.google.com/maps/search/?api=1&query=Sleepwell Apatelle+Dr.+E.+V.+Roque+Sr.+Ave+Bagong+Buhay+1,+Sapang+Palay,+Bulacan,+3024" target="_blank">
+                    <i class="fas fa-map-marker-alt" style="font-size: 25px; color: #4285F4;"></i>
+                </a>
+                
+            </div>                
+        <div class="circle1-shape">
+     <img src="editedbuilding.png" alt="Image Inside Circle"> <!-- Replace 'your-image.jpg' with the actual image file -->
+                </div>  
+                </div>
+    </div>
+</section>
+
+    <!-- Our Services Section -->
+    <section id="services" class="services-section">
+        <h2 class="section-title">Our <span class ="highlight" > Services</span></h2>
+        <div class="container">
+            <div id="external-content"></div>
+            <script>
+                fetch('ourservices3.html')
+                    .then(response => response.text())
+                    .then(data => {
+                        document.getElementById('external-content').innerHTML = data;
+                    });
+            </script>
+        </div>
+    </section>
+   
+    <section id="services" class="services-section">
+        <h2 class="section-title">Our <span class ="highlight" > Credentials</span></h2>
+        <div class="container">
+            <div id="external-content"></div>
+            </div>
+            </section>
+  
+            <div class="cre-wrapper">
+    <div class="cre-container">
+        <!-- 1. Philippines Health Certificate -->
+        <div class="cre-box" onclick="showModal('img1')">
+            <div class="cre-icon">
+                <i class="fas fa-user-md"></i>
+            </div>
+            <h3>Philippines Health Certificate</h3>
+            <p>Issued by the Department of Health for workers to ensure compliance with health standards.</p>
+            <img id="img1" src="CERTIFICATEOFENVIRONMENTALMANAGEMENTBUREAU.jpg" class="modal-image" alt="Philippines Health Certificate">
+        </div>
+
+        <!-- 2. Payment Form -->
+        <div class="cre-box" onclick="showModal('img2')">
+            <div class="cre-icon">
+                <i class="fas fa-file-invoice-dollar"></i>
+            </div>
+            <h3>Payment Form</h3>
+            <p>A document that confirms payment for services or goods, required for official transactions.</p>
+            <img id="img2" src="CERTIFICATEOFPAYMENTFORM.jpg" class="modal-image" alt="Philippines Health Certificate">
+        </div>
+
+        <!-- 3. SSS Membership -->
+        <div class="cre-box" onclick="showModal('img3')">
+            <div class="cre-icon">
+                <i class="fas fa-id-badge"></i>
+            </div>
+            <h3>SSS Membership</h3>
+            <p>Membership issued by the Social Security System for employees and self-employed individuals.</p>
+            <img id="img3" src="CERTIFICATEOFMEMBERSHIP.jpg" class="modal-image" alt="Philippines Health Certificate">
+        </div>
+
+        <!-- 4. Certificate of Registration -->
+        <div class="cre-box" onclick="showModal('img4')">
+            <div class="cre-icon">
+                <i class="fas fa-certificate"></i>
+            </div>
+            <h3>Certificate of Registration</h3>
+            <p>A legal document that affirms the business is registered with the Bureau of Internal Revenue (BIR).</p>
+            <img id="img4" src="CERTIFICATEOFREGISTRATION.jpg" class="modal-image" alt="Philippines Health Certificate">
+        </div>
+
+        <!-- 5. Fire Safety Certificate -->
+        <div class="cre-box" onclick="showModal('img5')">
+            <div class="cre-icon">
+                <i class="fas fa-fire-extinguisher"></i>
+            </div>
+            <h3>Fire Safety Certificate</h3>
+            <p>Certification from the Bureau of Fire Protection ensuring compliance with fire safety standards.</p>
+            <img id="img5" src="CERTIFICATEOFFIRESAFETY.jpg" class="modal-image" alt="Philippines Health Certificate">
+        </div>
+
+        <!-- 6. DTI Permit -->
+        <div class="cre-box" onclick="showModal('img6')">
+            <div class="cre-icon">
+                <i class="fas fa-clipboard-check"></i>
+            </div>
+            <h3>DTI Permit</h3>
+            <p>Issued by the Department of Trade and Industry, confirming that the business name is registered.</p>
+            <img id="img6" src="CERTIFICATEOFDTI.jpg" class="modal-image" alt="Philippines Health Certificate">
+        </div>
+
+        <!-- 7. Sanitary Permit to Operate -->
+        <div class="cre-box" onclick="showModal('img7')">
+            <div class="cre-icon">
+                <i class="fas fa-shield-virus"></i>
+            </div>
+            <h3>Sanitary Permit to Operate</h3>
+            <p>Certification ensuring that the business meets sanitary standards required for operation.</p>
+            <img id="img7" src="CERTIFICATEOFSANITARYPERMITTOOPPERATE.jpg" class="modal-image" alt="Philippines Health Certificate">
+        </div>
+
+        <!-- 8. Barangay Clearance -->
+        <div class="cre-box" onclick="showModal('img8')">
+            <div class="cre-icon">
+                <i class="fas fa-map-marker-alt"></i>
+            </div>
+            <h3>Barangay Clearance</h3>
+            <p>Local government clearance affirming compliance with requirements to operate within a barangay.</p>
+            <img id="img8" src="CERTIFICATEOFBARANGAYCLEARANCE.jpg" class="modal-image" alt="Philippines Health Certificate">
+        </div>
+
+        <!-- 9. Business Permit -->
+        <div class="cre-box" onclick="showModal('img9')">
+            <div class="cre-icon">
+                <i class="fas fa-briefcase"></i>
+            </div>
+            <h3>Business Permit</h3>
+            <p>Issued by the local government, allowing the business to operate legally within a jurisdiction.</p>
+            <img id="img9" src="CERTIFICATEOFBUSINESSPERMIT.jpg" class="modal-image" alt="Philippines Health Certificate">
+        </div>
+    </div>
+    </div>
+
+    <div id="imageModal" class="modal" onclick="closeModal()">
+        <span class="modal-close">&times;</span>
+        <img class="modal-content" id="modalImage">
+    </div>
+
+ <!-- Contact Section -->
+<section id="contact" class="contact-section">
+    <div class="contact-container">
+        <h1>Contact Us</h1>
+
+        <!-- Icons Container -->
+        <div class="contact-icons">
+            <!-- Facebook Icon -->
+            <a href="https://www.facebook.com/profile.php?id=100063553304564&mibextid=ZbWKwL" target="_blank">
+                <i class="fab fa-facebook-square" style="font-size: 50px; color: #3b5998;"></i>
+            </a>
+
+            <!-- Telephone Icon -->
+            <i class="fas fa-phone" id="phoneIcon" style="font-size: 50px; color: #25d366;"></i>
+
+            <!-- Email Icon -->
+            <a href="mailto:apartelle.sleepwell@yahoo.com">
+                <i class="fas fa-envelope" style="font-size: 50px; color: #ea4335;"></i>
+            </a>
+        </div>
+    </div>
+
+    <!-- Feedback Form -->
+    <div class="feedback-form">
+        <h2 class="section-title">
+            <span class="highlight">CONTACT</span> US
+        </h2>
+        <form action="process_message.php" method="POST">
+            <div class="form-group">
+                <label for="name">Name:</label>
+                <input type="text" id="name" name="name" required>
+            </div>
+            <div class="form-group">
+                <label for="email">Email:</label>
+                <input type="email" id="email" name="email" required>
+            </div>
+            <div class="form-group">
+                <label for="message">Message:</label>
+                <textarea id="message" name="message" required></textarea>
+            </div>
+            <button type="submit">Submit</button>
+        </form>
+    </div>
+
+    <!-- Telephone Number Popup -->
+    <div id="phonePopup" class="popup">
+        <span id="phoneNumber">09976711242</span>
+        <span class="close-btn" id="closePopup">&times;</span>
+    </div>
+</section>
+
+
+    <!-- Telephone Number Popup -->
+    <div id="phonePopup" class="popup">
+        <span id="phoneNumber">09976711242</span>
+        <span class="close-btn" id="closePopup">&times;</span>
+    </div>
+</section>
+
+
+    <script>
+
+document.addEventListener('DOMContentLoaded', function() {
+    const image = document.querySelector('.circle1-shape img');
+    const initialTransform = 'translateX(-50%) translateY(100px)'; // Initial state (hidden)
+
+    // Set initial state for the image
+    image.style.opacity = '0';
+    image.style.transform = initialTransform;
+
+    function handleScroll() {
+        const rect = image.getBoundingClientRect();
+        const windowHeight = window.innerHeight;
+        const isInView = rect.top < windowHeight && rect.bottom > 0;
+
+        if (isInView) {
+            // Animate the image upwards into view
+            image.style.opacity = '1';
+            image.style.transform = 'translateX(-50%) translateY(0)'; // Move image to its original position
+        } else {
+            // Optionally hide the image or set it to its original position when out of view
+            image.style.opacity = '0';
+            image.style.transform = initialTransform; // Hide image by moving it down
+        }
+    }
+
+    // Initial check
+    handleScroll();
+
+    // Check on scroll
+    window.addEventListener('scroll', handleScroll);
+});
+
+
+    const photos = document.querySelectorAll('.unique-place-photo');
+    const overlay = document.getElementById('unique-overlay');
+
+    photos.forEach(photo => {
+        photo.addEventListener('click', () => {
+            photo.classList.add('enlarged');
+            overlay.style.display = 'block';
+        });
+    }); 
+
+    overlay.addEventListener('click', () => {
+        document.querySelectorAll('.unique-place-photo').forEach(photo => {
+            photo.classList.remove('enlarged');
+        });
+        overlay.style.display = 'none';
+    });
+
+
+        // Show the phone number when the phone icon is clicked
+        document.getElementById("phoneIcon").addEventListener("click", function() {
+            document.getElementById("phonePopup").style.display = "block";
+        });
+
+        // Hide the phone number popup when the close button is clicked
+        document.getElementById("closePopup").addEventListener("click", function() {
+            document.getElementById("phonePopup").style.display = "none";
+        });
+
+        document.addEventListener('DOMContentLoaded', function() {
+            const urlParams = new URLSearchParams(window.location.search);
+            if (urlParams.has('login_success')) {
+                alert('You have successfully logged in!');
+                // Optionally, you could remove the parameter from the URL to prevent multiple alerts
+                // history.replaceState(null, '', window.location.pathname);
+            }
+        });
+
+    </script>
+     <footer class="footer">
+        <div class="container">
+            <p>&copy; 2024 Sleepwell Apartelle. All rights reserved.</p>
+        </div>
+    </footer>
+</body>
+</html>

@@ -1,0 +1,109 @@
+.cre-body {
+    font-family: Arial, sans-serif;
+    background-color: #f0f0f0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    
+}
+.cre-wrapper {
+    width: 80%; 
+    margin: 0 auto; 
+}
+.cre-container {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr); 
+    gap: 20px;
+    padding: 20px;
+    width: 100%; 
+}
+
+/* Media query for small screens */
+@media (max-width: 768px) {
+    .cre-container {
+        grid-template-columns: repeat(2, 1fr);
+    }
+}
+
+@media (max-width: 480px) {
+    .cre-container {
+        grid-template-columns: 1fr; 
+    }
+}
+
+.cre-box {
+    background-color: #fff;
+    border-radius: 10px;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+    padding: 20px;
+    text-align: center;
+    transition: transform 0.3s ease-in-out;
+}
+
+.cre-box:hover {
+    transform: translateY(-10px);
+}
+
+.cre-icon {
+    width: 50px;
+    height: 50px;
+    background-color: #5866ff;
+    border-radius: 50%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin: 0 auto 10px auto;
+    font-size: 24px;
+    color: white;
+}
+
+.cre-h3 {
+    font-size: 18px;
+    margin-bottom: 10px;
+    color: #333;
+}
+
+.cre-p {
+    font-size: 14px;
+    color: #666;
+    line-height: 1.5;
+}
+
+/* Modal container */
+.modal {
+    display: none; /* Hidden by default */
+    position: fixed; /* Stay in place */
+    z-index: 999; /* Sit on top */
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.7); /* Black background with opacity */
+    justify-content: center;
+    align-items: center;
+}
+
+/* Modal image */
+.modal-content {
+    max-width: 80%; /* Adjust the image size */
+    max-height: 80%; /* Ensure the image is not too large */
+    margin: auto;
+    display: block;
+}
+
+/* Close button */
+.modal-close {
+    position: absolute;
+    top: 20px;
+    right: 30px;
+    color: white;
+    font-size: 40px;
+    font-weight: bold;
+    cursor: pointer;
+}
+
+/* Hide modal images by default */
+.modal-image {
+    display: none;
+}

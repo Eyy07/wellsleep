@@ -1,0 +1,241 @@
+/* Ensure chat bubble and bot icon are above everything */
+.chat-support {
+    position: fixed;
+    bottom: 20px;
+    right: 20px;
+    z-index: 1000; /* Keeps it on top of everything */
+    cursor: pointer;
+    display: flex;
+}
+
+/* Chat bubble style */
+.chat-bubble {
+    background-color: #9bf272;
+    color: #333;
+    padding: 10px 15px;
+    border-radius: 50px;
+    display: flex;
+    align-items: center;
+    position: relative;
+    z-index: 1000;
+}
+
+/* Bot icon inside the chat bubble */
+.chat-icon {
+    font-size: 24px;
+    margin-right: 10px;
+}
+
+.chat-icon i {
+    color: black;
+}
+
+/* Chat box */
+.chat-box {
+    display: none;
+    position: fixed;
+    bottom: 0;
+    right: 0;
+    width: calc(100% - 40px); /* Full width minus padding */
+    max-width: 400px; /* Max width for larger screens */
+    height: 60vh; /* 60% of the viewport height */
+    max-height: 500px; /* Maximum height */
+    border: 1px solid #ccc;
+    background-color: #fff;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    display: flex;
+    flex-direction: column;
+    z-index: 999;
+}
+
+/* Chat header */
+.chat-header {
+    background-color: #9bf272;
+    color: black;
+    padding: 8px 12px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.header-icon {
+    font-size: 24px; /* Adjust icon size as needed */
+    margin-right: 8px; /* Space between icon and text */
+}
+
+.chat-header h3 {
+    margin: 0;
+    font-size: 18px; /* Adjust font size if needed */
+    display: flex;
+    align-items: center; /* Align items vertically center */
+    color: black;
+}
+
+.close-btn {
+    background: none;
+    border: none;
+    color: black;
+    font-size: 18px; /* Adjust font size for the close button */
+    cursor: pointer;
+}
+
+.chat-content {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    padding: 10px;
+    overflow-y: auto;
+    overflow-x: hidden;
+}
+
+.message {
+    margin-bottom: 10px;
+    max-width: 80%; /* Ensure messages do not stretch too wide */
+    min-width: 20%; /* Ensure a minimum width for very short messages */
+    border-radius: 15px;
+    padding: 10px;
+    line-height: 1.4; /* Improve readability */
+    position: relative;
+    word-wrap: break-word; /* Prevent text from overflowing */
+    width: fit-content; /* Automatically adapts to the text size */
+}
+
+.message.sent {
+    align-self: flex-end;
+    background-color: #007bff; /* Bootstrap primary color */
+    color: white;
+    border-radius: 15px 15px 15px 0; /* Rounded corners */
+    padding: 10px 15px;
+    margin: 5px 0;
+    position: relative; /* Required for the arrow */
+}
+
+.message.sent::after {
+    content: '';
+    position: absolute;
+    top: 10%;
+    left: 100%; /* Position to the right */
+    border-width: 10px;
+    border-style: solid;
+    border-color: transparent transparent transparent #007bff; /* Arrow color */
+}
+
+.message.received {
+    align-self: flex-start;
+    background-color: #28a745; /* Bootstrap success color */
+    color: white;
+    border-radius: 15px 15px 0 15px; /* Rounded corners */
+    padding: 10px 15px;
+    margin: 5px 0;
+    position: relative; /* Required for the arrow */
+}
+
+.message.received::after {
+    content: '';
+    position: absolute;
+    top: 10%;
+    right: 100%; /* Position to the left */
+    border-width: 10px;
+    border-style: solid;
+    border-color: transparent #28a745 transparent transparent; /* Arrow color */
+}
+
+.message p {
+    margin: 0; /* Remove default margin for paragraphs */
+    word-break: break-word; /* Ensure long words break within the container */
+}
+
+.suggestions {
+    display: flex;
+    flex-direction: column;
+    padding: 5px; /* Adjust padding as needed */
+    gap: 5px; /* Space between buttons */
+    align-items: flex-start; 
+}
+
+.suggestions button {
+    background-color: #9bf272;
+    color: black;
+    border: none;
+    padding: 5px 10px; /* Ensures padding adjusts based on text */
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 14px;
+    text-align: right; /* Ensures text starts from the left */
+    white-space: nowrap; /* Prevents text from wrapping */
+    display: inline-block;
+    width: auto; /* Adapts the width based on text content */
+}
+
+.suggestions button:hover {
+    background-color: #9bf272;
+}
+
+/* Chat input */
+.chat-input {
+    padding: 10px;
+    border-top: 1px solid #ccc;
+    display: flex;
+}
+
+.chat-input input {
+    flex: 1;
+    padding: 5px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+}
+
+.chat-input button {
+    background-color: #9bf272;
+    color: black;
+    border: none;
+    padding: 5px 10px;
+    border-radius: 5px;
+    cursor: pointer;
+    margin-left: 10px;
+}
+
+/* Media queries for smaller screens */
+@media (max-width: 768px) {
+    .chat-support {
+        right: 10px;
+        bottom: 10px;
+        transform: scale(0.75); /* Shrinks further on very small screens */
+    }
+    .message {
+        max-width: 90%; /* Stretch messages more on smaller screens */
+    }
+    .chat-box {
+        width: calc(100% - 40px); /* Full width minus padding */
+        height: 60vh;
+    }
+
+    .chat-bubble {
+        padding: 6px 10px;
+    }
+
+    .chat-icon {
+        font-size: 50px;
+    }
+
+    /* Hide the chat bubble text */
+    .chat-bubble span {
+        display: none; /* Hides the text inside the chat bubble */
+    }
+
+    .chat-header {
+        padding: 5px 8px;
+    }
+
+    .chat-header h3 {
+        font-size: 12px;
+    }
+
+    .chat-input input {
+        padding: 3px;
+    }
+
+    .chat-input button {
+        padding: 4px 6px;
+    }
+}

@@ -1,0 +1,178 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Registration Page</title>
+    <style>
+        /* Reset default browser styles */
+        body, html {
+            margin: 0;
+            padding: 0;
+            font-family: 'Poppins', sans-serif;
+            height: 100vh;
+            overflow: hidden;
+        }
+
+        .container {
+            display: flex;
+            height: 100%;
+            width: 100%;
+        }
+
+        .section {
+            flex: 1;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            padding: 2rem;
+            box-sizing: border-box;
+        }
+
+        .register-section {
+            background: white;
+            border-radius: 12px;
+            box-shadow: 8px 8px 16px rgba(0, 0, 0, 0.1), -8px -8px 16px rgba(255, 255, 255, 0.3);
+            position: relative;
+        }
+
+        .welcome-section {
+            background-image: url('logoleft-transformed.png'); /* Specify the image file */
+            background-size: cover; /* Ensures the image covers the whole section */
+            background-position: center; /* Centers the image */
+            color: #fff; /* Adjust text color for better visibility on the background */
+            padding: 2rem; /* Added padding for better spacing */
+            display: flex; /* Allows flexbox for centering content */
+            flex-direction: column; /* Stacks child elements vertically */
+            justify-content: center; /* Centers child elements vertically */
+            align-items: center; /* Centers child elements horizontally */
+        }
+
+        .welcome-text {
+            text-align: center;
+            font-size: 2rem; /* Increased font size for larger screens */
+            font-weight: bold;
+        }
+
+        .form {
+            width: 100%;
+            max-width: 400px; /* Limit the maximum width of the form */
+        }
+
+        .form h2 {
+            margin-bottom: 1rem;
+            text-align: center;
+            color: #333;
+            font-size: 1.5rem;
+            font-weight: bold;
+        }
+
+        .form-group {
+            margin-bottom: 1rem;
+        }
+
+        .form-group label {
+            display: block;
+            margin-bottom: 0.5rem;
+            color: #444;
+            font-size: 1rem;
+        }
+
+        .form-group input {
+            width: 100%;
+            padding: 0.75rem;
+            border: 2px solid #ddd;
+            border-radius: 6px;
+            box-sizing: border-box;
+            font-size: 1rem;
+            transition: border-color 0.3s;
+        }
+
+        .form-group input:focus {
+            border-color: #4a90e2;
+            outline: none;
+        }
+
+        .btn {
+            width: 100%;
+            padding: 0.75rem;
+            background-color: #4a90e2;
+            color: #fff;
+            border: none;
+            border-radius: 6px;
+            font-size: 1.1rem;
+            cursor: pointer;
+            transition: background-color 0.3s, transform 0.3s;
+        }
+
+        .btn:hover {
+            background-color: #357abd;
+            transform: translateY(-2px);
+        }
+
+        .toggle-btn {
+            margin-top: 1rem;
+            text-align: center;
+            color: #4a90e2;
+            font-weight: bold;
+            cursor: pointer;
+        }
+
+        @media (max-width: 768px) {
+            .welcome-text {
+                font-size: 1.5rem; /* Responsive font size for smaller screens */
+            }
+
+            .form-group label {
+                font-size: 0.9rem;
+            }
+
+            .form-group input, .btn {
+                font-size: 0.9rem; /* Responsive input and button size */
+            }
+
+            .form h2 {
+                font-size: 1.25rem; /* Responsive heading size */
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="section register-section">
+            <div class="register-form form">
+                <h2>Account Registration</h2>
+                <form action="register.php" method="post">
+                    <div class="form-group">
+                        <label for="new-username">Username</label>
+                        <input type="text" id="new-username" name="new-username" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="email">Email</label>
+                        <input type="email" id="email" name="email" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="new-password">Password</label>
+                        <input type="password" id="new-password" name="new-password" required>
+                    </div>
+                    <div class="form-group">
+                        <button type="submit" class="btn">Register</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+        <div class="section welcome-section">
+            <div class="welcome-text">
+                <p>Trabaho na</p>
+                <p class="toggle-btn" onclick="redirectToAdmission()">Login</p>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        function redirectToAdmission() {
+            window.location.href = 'login.html'; // Redirects to login.html when "Login" is clicked
+        }
+    </script>
+</body>
+</html>
