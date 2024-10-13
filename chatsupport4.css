@@ -6,8 +6,8 @@
     z-index: 1000; /* Keeps it on top of everything */
     cursor: pointer;
     display: flex;
-    overflow:hidden;
-    max-width: 80%;
+    overflow: hidden;
+    max-width: 100%;
 }
 
 /* Chat bubble style */
@@ -20,7 +20,7 @@
     align-items: center;
     position: relative;
     z-index: 1000;
-    max-width: 80%;
+    max-width: 100%;
 }
 
 /* Bot icon inside the chat bubble */
@@ -39,16 +39,17 @@
     position: fixed;
     bottom: 0;
     right: 0;
-    width: calc(100% - 40px); /* Full width minus padding */
-    max-width: 400px; /* Max width for larger screens */
-    height: 60vh; /* 60% of the viewport height */
-    max-height: 500px; /* Maximum height */
+    width: calc(100% - 40px); 
+    max-width: 400px; 
+    height: 60vh;
+    max-height: 500px; 
     border: 1px solid #ccc;
     background-color: #fff;
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
     display: flex;
     flex-direction: column;
     z-index: 999;
+    box-sizing: border-box; /* Ensure padding doesn't cause overflow */
 }
 
 /* Chat header */
@@ -62,15 +63,15 @@
 }
 
 .header-icon {
-    font-size: 24px; /* Adjust icon size as needed */
-    margin-right: 8px; /* Space between icon and text */
+    font-size: 24px;
+    margin-right: 8px; 
 }
 
 .chat-header h3 {
     margin: 0;
-    font-size: 18px; /* Adjust font size if needed */
+    font-size: 18px;
     display: flex;
-    align-items: center; /* Align items vertically center */
+    align-items: center; 
     color: black;
 }
 
@@ -78,7 +79,7 @@
     background: none;
     border: none;
     color: black;
-    font-size: 18px; /* Adjust font size for the close button */
+    font-size: 18px;
     cursor: pointer;
 }
 
@@ -91,83 +92,85 @@
     overflow-x: hidden;
 }
 
+/* Chat message bubbles */
 .message {
     margin-bottom: 10px;
-    max-width: 80%; /* Ensure messages do not stretch too wide */
-    min-width: 20%; /* Ensure a minimum width for very short messages */
+    max-width: 80%; 
+    min-width: 20%; 
     border-radius: 15px;
     padding: 10px;
-    line-height: 1.4; /* Improve readability */
+    line-height: 1.4; 
     position: relative;
-    word-wrap: break-word; /* Prevent text from overflowing */
-    width: fit-content; /* Automatically adapts to the text size */
+    word-wrap: break-word;
+    width: fit-content;
 }
 
 .message.sent {
     align-self: flex-end;
-    background-color: #007bff; /* Bootstrap primary color */
+    background-color: #007bff;
     color: white;
-    border-radius: 15px 15px 15px 0; /* Rounded corners */
+    border-radius: 15px 15px 15px 0;
     padding: 10px 15px;
     margin: 5px 0;
-    position: relative; /* Required for the arrow */
+    position: relative;
 }
 
 .message.sent::after {
     content: '';
     position: absolute;
     top: 10%;
-    left: 100%; /* Position to the right */
+    left: 100%;
     border-width: 10px;
     border-style: solid;
-    border-color: transparent transparent transparent #007bff; /* Arrow color */
+    border-color: transparent transparent transparent #007bff;
 }
 
 .message.received {
     align-self: flex-start;
-    background-color: #28a745; /* Bootstrap success color */
+    background-color: #28a745;
     color: white;
-    border-radius: 15px 15px 0 15px; /* Rounded corners */
+    border-radius: 15px 15px 0 15px;
     padding: 10px 15px;
     margin: 5px 0;
-    position: relative; /* Required for the arrow */
+    position: relative;
 }
 
 .message.received::after {
     content: '';
     position: absolute;
     top: 10%;
-    right: 100%; /* Position to the left */
+    right: 100%;
     border-width: 10px;
     border-style: solid;
-    border-color: transparent #28a745 transparent transparent; /* Arrow color */
+    border-color: transparent #28a745 transparent transparent;
 }
 
 .message p {
-    margin: 0; /* Remove default margin for paragraphs */
-    word-break: break-word; /* Ensure long words break within the container */
+    margin: 0;
+    word-break: break-word;
 }
 
+/* Suggestions */
 .suggestions {
     display: flex;
     flex-direction: column;
-    padding: 5px; /* Adjust padding as needed */
-    gap: 5px; /* Space between buttons */
-    align-items: flex-start; 
+    padding: 5px;
+    gap: 5px;
+    align-items: flex-start;
 }
 
 .suggestions button {
     background-color: #9bf272;
     color: black;
     border: none;
-    padding: 5px 10px; /* Ensures padding adjusts based on text */
+    padding: 5px 10px;
     border-radius: 5px;
     cursor: pointer;
     font-size: 14px;
-    text-align: right; /* Ensures text starts from the left */
-    white-space: nowrap; /* Prevents text from wrapping */
+    text-align: right;
+    white-space: nowrap;
     display: inline-block;
-    width: auto; /* Adapts the width based on text content */
+    width: auto;
 }
 
 .suggestions button:hover {
@@ -200,7 +203,7 @@
 
 /* Media queries for smaller screens */
 @media (max-width: 768px) {
-      .chat-support {
+    .chat-support {
         right: 5px;
         bottom: 5px;
         transform: scale(0.9);
@@ -210,10 +213,11 @@
         max-width: 300px;
     }
     .message {
-        max-width: 90%; /* Stretch messages more on smaller screens */
+        max-width: 90%;
     }
+
     .chat-box {
-        width: calc(100% - 40px); /* Full width minus padding */
+        width: calc(100% - 40px);
         height: 60vh;
     }
 
@@ -227,7 +231,7 @@
 
     /* Hide the chat bubble text */
     .chat-bubble span {
-        display: none; /* Hides the text inside the chat bubble */
+        display: none;
     }
 
     .chat-header {
