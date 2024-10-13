@@ -200,10 +200,14 @@
 
 /* Media queries for smaller screens */
 @media (max-width: 768px) {
-    .chat-support {
-        right: 10px;
-        bottom: 10px;
-        transform: scale(0.75); /* Shrinks further on very small screens */
+      .chat-support {
+        right: 5px;
+        bottom: 5px;
+        transform: scale(0.9);
+    }
+    .chat-box {
+        width: 90vw;
+        max-width: 300px;
     }
     .message {
         max-width: 90%; /* Stretch messages more on smaller screens */
