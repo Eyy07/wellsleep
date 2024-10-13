@@ -1,8 +1,8 @@
 /* Ensure chat bubble and bot icon are above everything */
 .chat-support {
     position: fixed;
-    bottom: 20px;
-    right: 35px;
+    bottom: 5px;
+    right: 20px;
     z-index: 1000; /* Keeps it on top of everything */
     cursor: pointer;
     display: flex;
