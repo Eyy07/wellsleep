@@ -21,6 +21,7 @@
     position: relative;
     z-index: 1000;
     max-width: 100%;
+    overflow:hidden;
 }
 
 /* Bot icon inside the chat bubble */
