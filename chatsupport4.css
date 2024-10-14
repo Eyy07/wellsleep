@@ -6,7 +6,7 @@
     z-index: 1000; /* Keeps it on top of everything */
     cursor: pointer;
     display: flex;
-    overflow: hidden;
+    overflow-x: hidden;
     max-width: 100%;
 }
 
